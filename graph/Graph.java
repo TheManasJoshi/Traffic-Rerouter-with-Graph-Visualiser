@@ -1,29 +1,48 @@
+package graph;
+
 import java.util.*;
 
-class Graph {
-    int V;
-    ArrayList<ArrayList<Edge>> adj;
+public class Graph {
 
-    Graph(int V) {
+    public int V;
+
+    public ArrayList<ArrayList<Edge>> adj;
+
+    public Graph(int V) {
+
         this.V = V;
+
         adj = new ArrayList<>();
 
         for (int i = 0; i < V; i++) {
+
             adj.add(new ArrayList<>());
         }
     }
 
-    void addEdge(int u, int v, int w) {
+    public void addEdge(int u, int v, int w) {
+
         adj.get(u).add(new Edge(v, w));
-        adj.get(v).add(new Edge(u, w)); // undirected
+
+        adj.get(v).add(new Edge(u, w));
     }
 
-    void blockEdge(int u, int v) {
+    public void blockEdge(int u, int v) {
+
         for (Edge e : adj.get(u)) {
-            if (e.to == v) e.blocked = true;
+
+            if (e.to == v) {
+
+                e.blocked = true;
+            }
         }
+
         for (Edge e : adj.get(v)) {
-            if (e.to == u) e.blocked = true;
+
+            if (e.to == u) {
+
+                e.blocked = true;
+            }
         }
     }
 }
